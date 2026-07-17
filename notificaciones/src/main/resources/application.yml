@@ -1,0 +1,35 @@
+server:
+  port: 8091
+email:
+  account: {direccion de correo}
+
+spring:
+  application:
+    name: notificaciones
+  kafka:
+    consumer:
+      bootstrap-server: localhost:9092
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/notificaciones
+    username: postgres
+    password: {password-DB}
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  config:
+    import: optional:configserver:http://localhost:8888
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
